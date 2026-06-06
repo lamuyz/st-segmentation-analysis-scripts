@@ -22,3 +22,7 @@ More runnable scripts and analysis scripts will be added gradually as the reposi
 - `docs/`: documentation for data and parameter notes
 - `example_results/`: small example outputs that are safe to share
 
+## Environment Notes
+
+Different tools in this repository may require separate software environments.  
+Instead of assuming a single unified environment for all methods, environment files and dependency notes can be maintained inside each method folder when needed.
