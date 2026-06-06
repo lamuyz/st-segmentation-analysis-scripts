@@ -1,5 +1,3 @@
-import os
-import time
 import numpy as np
 import pandas as pd
 import tifffile
@@ -13,13 +11,6 @@ from PIL import Image
 # Objective: Generate a comprehensive 2x2 panel using final output files
 #            (.h5ad, .tif, .png, .parquet) to illustrate spatial mapping QC.
 # ==============================================================================
-
-# 限制底层线性代数库的线程数，防止多线程环境下的内存爆炸
-os.environ["OMP_NUM_THREADS"] = "15" 
-os.environ["MKL_NUM_THREADS"] = "15"
-
-start_time = time.time()
-print("Step 1: Loading all required datasets...")
 
 # 1. 加载数据文件 (请根据实际情况修改路径)
 tif_path = 'C04042E3_HE_regist.tif'
@@ -42,7 +33,6 @@ adata = ad.read_h5ad(h5ad_path)
 
 print(f"Data loaded. H5AD object contains {adata.n_obs:,} cells and {adata.n_vars:,} genes.")
 
-print("\nStep 2: Rendering the 4-panel spatial mapping overview...")
 fig, axes = plt.subplots(2, 2, figsize=(20, 20))
 
 # --- Panel 1 (Top-Left): Nissl (RAW Image, Inverted) ---
