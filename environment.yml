@@ -1,0 +1,15 @@
+name: st-segmentation-analysis
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-image
+  - tifffile
+  - scanpy
+  - anndata
+  - pyyaml
+
