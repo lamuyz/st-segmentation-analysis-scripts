@@ -4,7 +4,6 @@ import numpy as np
 
 # ================= 1. 读取数据 =================
 h5ad_file = "HE_grey.h5ad"
-print(f"[*] 正在读取 {h5ad_file} ...")
 adata = ad.read_h5ad(h5ad_file)
 
 # ================= 2. 计算各项指标 =================
