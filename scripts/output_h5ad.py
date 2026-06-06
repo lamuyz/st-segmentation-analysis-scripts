@@ -1,10 +1,3 @@
-import os
-import time
-
-# 1. 限制底层线性代数库的线程数，防止多线程环境下的算力冲突
-os.environ["OMP_NUM_THREADS"] = "15" 
-os.environ["MKL_NUM_THREADS"] = "15"
-
 import pandas as pd
 import numpy as np
 import tifffile
