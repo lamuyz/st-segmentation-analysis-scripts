@@ -17,7 +17,7 @@ More runnable scripts and analysis scripts will be added gradually as the reposi
 
 ## Repository Structure
 
-- `methods/`: method-specific folders for scripts or notes
+- `methods/`: method-specific folders for scripts or notes, and tool-specific environment files
 - `scripts/`: shared analysis scripts and utilities
 - `docs/`: documentation for data and parameter notes
 - `example_results/`: small example outputs that are safe to share
