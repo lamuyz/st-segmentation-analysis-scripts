@@ -6,6 +6,12 @@ This repository collects selected scripts, environment files, and workflow notes
 
 The goal is to keep a lightweight and traceable record of the analysis workflow, including method-specific running scripts, software environments, and shared downstream analysis utilities. It is not intended to serve as a complete public benchmark or a full data-reproduction repository.
 
+## Workflow
+
+The overall workflow includes input data preparation, segmentation tool benchmarking, post-processing and matrix construction, and downstream evaluation.
+
+![Workflow](figures/workflow.png)
+
 ## Repository Structure
 
 ```text
@@ -91,6 +97,12 @@ When running the scripts, update input and output paths according to the local c
 这个项目整理了亚细胞分辨率空间转录组数据细胞分割分析中使用到的部分脚本、环境文件和流程记录。
 
 主要目的是保存一个轻量、清晰、可追溯的分析流程记录，包括不同方法的运行脚本、软件环境，以及后续通用分析脚本。这里不是完整公开 benchmark，也不是完整数据复现仓库。
+
+## 分析流程
+
+整体流程包括输入数据整理、分割工具 benchmark、分割后处理与矩阵构建，以及综合评价和下游分析。
+
+![Workflow](figures/workflow.png)
 
 ## 仓库结构
 
