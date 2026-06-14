@@ -6,9 +6,9 @@ This folder contains scripts, environment files, and workflow notes for the buil
 
 ## Workflow
 
-The segmentation was performed using the built-in watershed-based workflow in Spateo.
+The segmentation was performed using the built-in watershed-based workflow provided by Spateo.
 
-The workflow was mainly run with standard or default settings.
+Cell expansion was also performed following the parameter settings provided in the official Spateo documentation.
 
 ## Environment Files
 
@@ -22,7 +22,9 @@ Input and output paths should be updated according to the local computing enviro
 
 ## Parameter Notes
 
-The Spateo built-in watershed workflow was mainly run with default or standard settings to keep the analysis comparable across methods.
+The Spateo built-in watershed workflow was mainly run with the standard settings described in the official documentation.
+
+Cell expansion was included as part of the Spateo workflow according to the documented parameter settings.
 
 Large image files and complete segmentation outputs are not stored in this repository.
 
@@ -32,7 +34,7 @@ Official Spateo repository: https://github.com/aristoteleo/spateo-release
 
 ---
 
-# Spateo Watershed 中文说明
+# Spateo 内置 Watershed 分割流程说明
 
 ## 概述
 
@@ -42,7 +44,7 @@ Official Spateo repository: https://github.com/aristoteleo/spateo-release
 
 细胞分割使用的是 Spateo 提供的内置 watershed-based workflow。
 
-该流程主要使用标准流程或默认设置运行。
+扩细胞步骤也按照 Spateo 官方文档中提供的参数设置进行。
 
 ## 环境文件
 
@@ -56,7 +58,9 @@ Official Spateo repository: https://github.com/aristoteleo/spateo-release
 
 ## 参数说明
 
-Spateo 内置 watershed 流程主要使用默认参数或标准设置运行，以保持不同方法之间的分析可比性。
+Spateo 内置 watershed 流程主要按照官方文档中的标准设置运行。
+
+其中扩细胞作为 Spateo 流程的一部分，按照文档提供的参数设置完成。
 
 大型图像文件和完整分割输出不保存在该仓库中。
 
