@@ -100,9 +100,7 @@ When running the scripts, update input and output paths according to the local c
 
 ## 分析流程
 
-整体流程包括输入数据整理、分割工具 benchmark、分割后处理与矩阵构建，以及综合评价和下游分析。
-
-![Workflow](figures/workflow.png)
+整体流程包括输入数据整理、分割工具 benchmark、分割后处理与矩阵构建，以及综合评价和下游分析。流程图见上方 Workflow 部分。
 
 ## 仓库结构
 
