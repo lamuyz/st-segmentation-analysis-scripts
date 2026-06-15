@@ -8,9 +8,11 @@ The goal is to keep a lightweight and traceable record of the analysis workflow,
 
 ## Workflow
 
-The overall workflow includes input data preparation, segmentation tool benchmarking, post-processing and matrix construction, and downstream evaluation.
+The overall workflow includes input data preparation, segmentation tool comparison, post-processing and matrix construction, QC analysis, and visualization.
 
 ![Workflow](figures/workflow.png)
+
+For a more detailed workflow description, see [docs/workflow.md](docs/workflow.md).
 
 ## Repository Structure
 
@@ -23,7 +25,12 @@ st-segmentation-analysis-scripts/
 │   ├── spateo_watershed/
 │   └── stardist/
 ├── scripts/
-├── example_results/
+├── docs/
+│   ├── workflow.md
+│   ├── data_description.md
+│   └── notes_on_parameters.md
+├── figures/
+│   └── workflow.png
 └── .gitignore
 ```
 
@@ -33,28 +40,32 @@ st-segmentation-analysis-scripts/
 
 Method-specific scripts, environment files, and notes.
 
-Each subfolder contains a separate README with details about the corresponding tool, including selected models, parameter settings, environment files, and workflow notes.
+Each subfolder contains a separate README with details about the corresponding tool, including selected models, running scripts, environment files, command notes, or workflow notes.
 
 ### `scripts/`
 
-Shared analysis scripts used for result summarization, metric calculation, visualization, or downstream analysis.
+Shared post-processing and visualization scripts.
 
-These scripts are not tied to a single segmentation method and may be used to process results from multiple tools.
+These scripts are not tied to a single segmentation method. They were used for format conversion, expression matrix construction, QC metric calculation, QC filtering, spatial visualization, and mapping overview plots.
 
-### `example_results/`
+### `docs/`
 
-Small example outputs or summary tables that are suitable for sharing.
+Additional workflow and data notes.
 
-Raw data, large intermediate files, and complete output directories are not included.
+This folder includes the overall workflow description, data description, and notes on parameter choices.
+
+### `figures/`
+
+Small figures used in the README or documentation, such as the workflow diagram.
 
 ## Software Links
 
 Original software repositories:
 
-- Cellpose: https://github.com/MouseLand/cellpose
-- CellBin2: https://github.com/STOmics/cellbin2
-- Spateo: https://github.com/aristoteleo/spateo-release
-- StarDist: https://github.com/stardist/stardist
+* Cellpose: https://github.com/MouseLand/cellpose
+* CellBin2: https://github.com/STOmics/cellbin2
+* Spateo: https://github.com/aristoteleo/spateo-release
+* StarDist: https://github.com/stardist/stardist
 
 Please refer to the original repositories and publications for installation instructions, documentation, and citation information.
 
@@ -66,21 +77,21 @@ Different tools require different software environments. Environment files or de
 
 To keep the repository lightweight and easy to maintain, large files are not uploaded, including:
 
-- raw spatial transcriptomics data
-- large tissue images
-- complete segmentation masks
-- complete expression matrices
-- large intermediate files
-- complete HTML reports
-- server logs and temporary debugging files
+* raw spatial transcriptomics data
+* large tissue or staining images
+* complete segmentation masks
+* complete expression matrices
+* large intermediate files
+* complete HTML reports
+* server logs and temporary debugging files
 
 The repository mainly keeps:
 
-- finalized running scripts
-- environment files
-- workflow notes
-- shared analysis scripts
-- small example results or summary tables
+* finalized running scripts
+* environment files
+* workflow notes
+* shared analysis scripts
+* small documentation figures
 
 ## Usage
 
@@ -100,7 +111,9 @@ When running the scripts, update input and output paths according to the local c
 
 ## 分析流程
 
-整体流程包括输入数据整理、分割工具 benchmark、分割后处理与矩阵构建，以及综合评价和下游分析。流程图见上方 Workflow 部分。
+整体流程包括输入数据整理、分割工具比较、分割后处理与矩阵构建、QC 分析和可视化。
+
+更详细的流程说明见 [docs/workflow.md](docs/workflow.md)。
 
 ## 仓库结构
 
@@ -113,7 +126,12 @@ st-segmentation-analysis-scripts/
 │   ├── spateo_watershed/
 │   └── stardist/
 ├── scripts/
-├── example_results/
+├── docs/
+│   ├── workflow.md
+│   ├── data_description.md
+│   └── notes_on_parameters.md
+├── figures/
+│   └── workflow.png
 └── .gitignore
 ```
 
@@ -123,28 +141,32 @@ st-segmentation-analysis-scripts/
 
 保存不同分割方法相关的运行脚本、环境文件和说明。
 
-每个子文件夹下会有单独的 README，用来说明对应工具的模型选择、参数设置、环境文件和流程记录。
+每个子文件夹下有单独的 README，用来说明对应工具的模型选择、运行脚本、环境文件、命令记录或流程说明。
 
 ### `scripts/`
 
-保存通用分析脚本，例如结果整理、指标统计、可视化或下游分析相关脚本。
+保存通用后处理和可视化脚本。
 
-这些脚本通常不是某一个方法专属的，而是用于统一处理多个分割方法的结果。
+这些脚本通常不是某一个方法专属的，而是用于格式转换、表达矩阵构建、QC 指标统计、QC 过滤、空间可视化和 mapping overview 图生成。
 
-### `example_results/`
+### `docs/`
 
-保存适合分享的小型示例结果或汇总表格。
+保存补充流程和数据说明。
 
-原始数据、大型中间文件和完整输出目录不放在这里。
+该文件夹包括整体 workflow、数据说明和参数记录等文档。
+
+### `figures/`
+
+保存 README 或文档中使用的小型图片，例如 workflow 流程图。
 
 ## 软件链接
 
 相关软件的原始仓库：
 
-- Cellpose: https://github.com/MouseLand/cellpose
-- CellBin2: https://github.com/STOmics/cellbin2
-- Spateo: https://github.com/aristoteleo/spateo-release
-- StarDist: https://github.com/stardist/stardist
+* Cellpose: https://github.com/MouseLand/cellpose
+* CellBin2: https://github.com/STOmics/cellbin2
+* Spateo: https://github.com/aristoteleo/spateo-release
+* StarDist: https://github.com/stardist/stardist
 
 具体安装方式、官方文档和引用信息请参考对应软件的原始仓库和论文说明。
 
@@ -156,21 +178,21 @@ st-segmentation-analysis-scripts/
 
 为了让仓库保持轻量、清晰，以下大文件不上传：
 
-- 原始空间转录组数据
-- 大型组织图像
-- 完整分割 mask
-- 完整表达矩阵
-- 大型中间结果
-- 完整 HTML 报告
-- 服务器日志和临时调试文件
+* 原始空间转录组数据
+* 大型组织图像或染色图像
+* 完整分割 mask
+* 完整表达矩阵
+* 大型中间结果
+* 完整 HTML 报告
+* 服务器日志和临时调试文件
 
 这里主要保存：
 
-- 最终整理后的运行脚本
-- 环境文件
-- 流程记录
-- 通用分析脚本
-- 小型示例结果或汇总表格
+* 最终整理后的运行脚本
+* 环境文件
+* 流程记录
+* 通用分析脚本
+* 小型文档图片
 
 ## 使用说明
 
