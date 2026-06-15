@@ -1,6 +1,6 @@
 # Cellpose
 
-## English
+## Overview
 
 This folder contains Cellpose-related scripts, environment files, and workflow notes used in the segmentation analysis.
 
@@ -41,7 +41,7 @@ Official Cellpose repository: https://github.com/MouseLand/cellpose
 
 ---
 
-## 中文
+## 概述
 
 本文件夹用于保存 Cellpose 相关的运行脚本、环境文件和流程记录。
 
