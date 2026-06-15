@@ -67,9 +67,7 @@ Large input data, complete masks, full output directories, generated `.h5ad` fil
 
 本文档总结本项目的整体分析流程。
 
-本项目从空间转录组数据及其对应的组织图像或染色图像出发，使用不同细胞分割工具生成 segmentation mask。随后基于 mask 将转录本归属到细胞，构建细胞级表达矩阵，计算 QC 指标，并生成用于比较和检查的可视化结果。
-
-![Workflow](../figures/workflow.png)
+本项目从空间转录组数据及其对应的组织图像或染色图像出发，使用不同细胞分割工具生成 segmentation mask。随后基于 mask 将转录本归属到细胞，构建细胞级表达矩阵，计算 QC 指标，并生成用于比较和检查的可视化结果。流程图见上方 overvie 部分
 
 ## 主要步骤
 
