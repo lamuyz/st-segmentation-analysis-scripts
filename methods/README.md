@@ -21,7 +21,7 @@ methods/
 | Folder              | Description                                                                    |
 | ------------------- | ------------------------------------------------------------------------------ |
 | `cellpose/`         | Cellpose-related scripts and environment files, organized by Cellpose version. |
-| `cellbin2/`         | CellBin2-related workflow notes and environment records.                       |
+| `cellbin2/`         | CellBin2 environment, patched runner, and example running scripts.             |
 | `spateo_watershed/` | Spateo watershed command notes and environment records.                        |
 | `stardist/`         | StarDist command notes and environment records.                                |
 
@@ -56,7 +56,7 @@ methods/
 | 文件夹                 | 说明                                      |
 | ------------------- | --------------------------------------- |
 | `cellpose/`         | 保存 Cellpose 相关脚本和环境文件，并按 Cellpose 版本整理。 |
-| `cellbin2/`         | 保存 CellBin2 相关流程说明和环境记录。                |
+| `cellbin2/`         | 保存 CellBin2 环境文件、适配性修改后的 runner 和示例运行脚本。|
 | `spateo_watershed/` | 保存 Spateo watershed 的命令记录和环境说明。         |
 | `stardist/`         | 保存 StarDist 的命令记录和环境说明。                 |
 
