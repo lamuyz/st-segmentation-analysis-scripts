@@ -1,0 +1,60 @@
+{
+  "image_process": {
+    "0": {
+      "file_path": "/data2/lamuyangzong/cellbin2/7_merfish_DAPI/stitched_dapi.tif",
+      "tech_type": "DAPI",
+      "chip_detect": false,
+      "quality_control": false,
+      "tissue_segmentation": true,
+      "cell_segmentation": true,
+      "channel_align": -1,
+      "registration": {
+        "fixed_image": 1,
+        "trackline": true,
+        "reuse": -1
+      },
+      "magnification": 10,
+      "chip_matching": -1,
+      "tissue_filter": -1
+    },
+    "1": {
+      "file_path": "/data2/lamuyangzong/cellbin2/7_merfish_DAPI/fixed_counts.gem",
+      "tech_type": "Transcriptomics",
+      "chip_detect": false,
+      "quality_control": false,
+      "tissue_segmentation": false,
+      "cell_segmentation": false,
+      "channel_align": -1,
+      "registration": {
+        "fixed_image": -1,
+        "trackline": true,
+        "reuse": -1
+      },
+      "magnification": 10,
+      "chip_matching": -1,
+      "tissue_filter": -1
+    }
+  },
+  "molecular_classify": {
+    "0": {
+      "exp_matrix": 1,
+      "cell_mask": {
+        "nuclei": [
+          0
+        ],
+        "interior": [],
+        "boundary": [],
+        "matrix": []
+      },
+      "extra_method": "",
+      "correct_r": 10
+    }
+  },
+  "run": {
+    "qc": true,
+    "alignment": true,
+    "matrix_extract": true,
+    "report": false,
+    "annotation": false
+  }
+}
