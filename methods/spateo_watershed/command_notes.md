@@ -44,8 +44,8 @@ start_time = time.time()
 st.cs.expand_labels(
     adata,
     "watershed",
-    distance=EXPAND_DISTANCE,
-    max_area=EXPAND_MAX_AREA,
+    distance=5,
+    max_area=400,
     out_layer="watershed_labels_expanded",
 )
 
@@ -62,5 +62,6 @@ print(f"Expansion finished in {time.time() - start_time:.1f}s")
 * `find_peaks_from_mask(..., 7)` was used for peak detection.
 * `watershed(..., 5)` was used for the watershed step.
 * `expand_labels` was used to generate the expanded watershed mask.
-* `EXPAND_DISTANCE`, `EXPAND_MAX_AREA`, and `EXPANDED_MASK_PATH` were set according to each dataset.
+* `distance=5` and `max_area=400` were used for label expansion in this project.
+* `EXPANDED_MASK_PATH` was set according to each dataset.
 * Complete input files, intermediate objects, masks, and logs are not stored in this repository.

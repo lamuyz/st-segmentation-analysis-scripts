@@ -17,6 +17,29 @@ cellbin2/
 └── run_cellbin2_after_pid_example.sh
 ```
 
+## Software Version and Parameters
+
+### Software version
+
+- Main software: `CellBin2 1.2.1`
+- Python: `3.8.20`
+- PyTorch: `2.4.1+cu118`
+- Environment file: `environment_cellbin2_st.yml`
+
+### Running mode
+
+- CellBin2 was run with sample-specific parameter files.
+- A patched project-local runner was used instead of relying only on the original upstream pipeline entrypoint.
+
+### Local modifications
+
+- Support for GEM files without `#OffsetX` / `#OffsetY` header lines
+- Support for count columns stored as floating-point values, rounded before accumulation
+- Safer visual GEF generation bin sizes `[1, 10, 20, 50, 100, 200]`
+- Compatibility handling for legacy `*_mask_adjust.tif` naming
+- Fallback when `extract4stitched()` matrix feature detection failed
+- Fallback when registration returned `None` but downstream code still accessed `info.offset`
+
 ## File Notes
 
 | File                                         | Description                                                                |
@@ -71,6 +94,29 @@ cellbin2/
 ├── run_cellbin2_queue_example.sh
 └── run_cellbin2_after_pid_example.sh
 ```
+
+## 软件版本与参数
+
+### 软件版本
+
+- 主软件：`CellBin2 1.2.1`
+- Python：`3.8.20`
+- PyTorch：`2.4.1+cu118`
+- 环境文件：`environment_cellbin2_st.yml`
+
+### 运行方式
+
+- CellBin2 使用样本对应的参数文件运行。
+- 本项目使用了本地 patched runner，而不是只依赖上游默认入口。
+
+### 本地适配修改
+
+- 支持没有 `#OffsetX` / `#OffsetY` 头部信息的 GEM 文件
+- 支持将浮点形式的 count 值四舍五入后再累加
+- 将 visual GEF 的 bin size 限制为 `[1, 10, 20, 50, 100, 200]`
+- 兼容 legacy `*_mask_adjust.tif` 命名
+- 在 `extract4stitched()` 特征检测失败时增加 fallback
+- 在 registration 返回 `None` 时增加 fallback
 
 ## 文件用途
 
