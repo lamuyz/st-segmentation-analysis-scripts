@@ -1,154 +1,169 @@
 # CellBin2
 
-## Overview
+This folder contains the CellBin2-related environment record, patched runner, example parameter file, and example running scripts used in this project.
 
-This folder records the CellBin2 environment, patched runner, and example running scripts used in this project.
-
-CellBin2 was included as one of the segmentation methods in the comparison. In this project, CellBin2 was run with sample-specific parameter files. A patched runner was used for some datasets to improve compatibility with the input matrix format and to make the workflow more robust.
+CellBin2 was run with sample-specific parameter files. A project-local patched runner was used to improve compatibility with different input formats and to make the workflow more robust across datasets.
 
 ## Files
 
 ```text
 cellbin2/
+├── README.md
 ├── environment_cellbin2.yml
 ├── run_cellbin_pipeline_patched_signed_gem.py
+├── cellbin2_example_params.json
 ├── run_cellbin2_single_sample.sh
 ├── run_cellbin2_queue_example.sh
-└── run_cellbin2_after_pid_example.sh
+├── run_cellbin2_after_pid_example.sh
+└── cellbin2_patch_notes.md
 ```
 
-## Software Version and Parameters
+## File Description
 
-### Software version
+| File                                                           | Description                                                                   |
+| -------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `environment_cellbin2.yml`                                     | Conda environment record used for CellBin2.                                   |
+| `run_cellbin_pipeline_patched_signed_gem.py`                   | Project-local patched CellBin2 runner used in this project.                   |
+| [`cellbin2_example_params.json`](cellbin2_example_params.json) | Example parameter file showing the configuration format used in this project. |
+| `run_cellbin2_single_sample.sh`                                | Example script for running CellBin2 on one sample.                            |
+| `run_cellbin2_queue_example.sh`                                | Example script for running multiple CellBin2 samples sequentially.            |
+| `run_cellbin2_after_pid_example.sh`                            | Example script for starting CellBin2 jobs after another process finishes.     |
+| [`cellbin2_patch_notes.md`](cellbin2_patch_notes.md)           | Brief notes on the local compatibility changes made to the CellBin2 runner.   |
 
-- Main software: `CellBin2 1.2.1`
-- Python: `3.8.20`
-- PyTorch: `2.4.1+cu118`
-- Environment file: `environment_cellbin2_st.yml`
+## Software Environment
 
-### Running mode
+The CellBin2 workflow was run in a separate conda environment.
 
-- CellBin2 was run with sample-specific parameter files.
-- A patched project-local runner was used instead of relying only on the original upstream pipeline entrypoint.
+Main environment information:
 
-### Local modifications
+```text
+CellBin2: 1.2.1
+Python: 3.8.20
+PyTorch: 2.4.1+cu118
+```
 
-- Support for GEM files without `#OffsetX` / `#OffsetY` header lines
-- Support for count columns stored as floating-point values, rounded before accumulation
-- Safer visual GEF generation bin sizes `[1, 10, 20, 50, 100, 200]`
-- Compatibility handling for legacy `*_mask_adjust.tif` naming
-- Fallback when `extract4stitched()` matrix feature detection failed
-- Fallback when registration returned `None` but downstream code still accessed `info.offset`
+The full environment record is provided in:
 
-## File Notes
+```text
+environment_cellbin2.yml
+```
 
-| File                                         | Description                                                                |
-| -------------------------------------------- | -------------------------------------------------------------------------- |
-| `environment_cellbin2.yml`                   | Conda environment record for running CellBin2.                             |
-| `run_cellbin_pipeline_patched_signed_gem.py` | Patched CellBin2 runner used for compatibility fixes in this project.      |
-| `run_cellbin2_single_sample.sh`              | Example script for running one CellBin2 sample.                            |
-| `run_cellbin2_queue_example.sh`              | Example script for running multiple samples sequentially.                  |
-| `run_cellbin2_after_pid_example.sh`          | Example script for starting queued samples after another process finishes. |
+## Usage Notes
 
-## Adaptation Notes
+The scripts and parameter file in this folder are simplified records of the actual running workflow.
 
-Some compatibility changes were made to run CellBin2 on the datasets used in this project.
+Before reuse, users should update:
 
-The main changes included:
+* input image path
+* input transcriptomics matrix path
+* output directory
+* sample name
+* CellBin2 parameter file
+* conda environment path
 
-* supporting GEM files without `#OffsetX` / `#OffsetY` header lines;
-* reading count columns written as float values and rounding them before accumulation;
-* limiting visual GEF generation to safer bin sizes;
-* reusing an existing readable temporary tissue GEF when available;
-* handling naming mismatch between legacy `*_mask_adjust.tif` files and the expected `*_cell_mask.tif` files;
-* adding a fallback when matrix feature detection failed during `extract4stitched()`;
-* adding a fallback when registration returned `None` and downstream code still attempted to access `info.offset`.
+For an example parameter file, see [`cellbin2_example_params.json`](cellbin2_example_params.json).
 
-These changes were made to improve workflow robustness for the dataset collection used in this project. They were not intended to change the core CellBin2 segmentation model itself.
+For details about local compatibility changes, see [`cellbin2_patch_notes.md`](cellbin2_patch_notes.md).
 
 ## Notes
 
-These scripts are simplified examples based on the actual CellBin2 running records.
+This folder is intended for workflow traceability rather than full data reproduction.
 
-Input paths, output paths, sample names, parameter files, and environment paths should be updated before running.
+Large files are not included in this repository, including:
 
-Large input data, complete CellBin2 outputs, masks, intermediate files, and log files are not stored in this repository.
+* raw spatial transcriptomics data
+* large tissue or staining images
+* complete CellBin2 output folders
+* segmentation masks
+* GEF files
+* complete expression matrices
+* intermediate files and logs
+
+Please refer to the original CellBin2 repository and documentation for official installation instructions, full workflow details, and citation information.
 
 ---
 
 # CellBin2 中文说明
 
-## 概述
+本文件夹保存本项目中 CellBin2 相关的运行环境、修改后的 runner、参数文件示例和运行脚本示例。
 
-本文件夹保存本项目中 CellBin2 相关的运行环境、适配性修改后的 runner 和示例运行脚本。
+在实际运行中，CellBin2 使用样本对应的参数文件。由于不同数据集的输入格式和中间结果情况并不完全一致，本项目使用了本地修改后的 runner，以提高流程的兼容性和稳定性。
 
-CellBin2 是本项目比较的细胞分割方法之一。在实际运行中，CellBin2 使用样本对应的参数文件。部分数据使用了修改后的 runner，以适配输入矩阵格式并提高流程稳定性。
-
-## 文件说明
+## 文件结构
 
 ```text
 cellbin2/
+├── README.md
 ├── environment_cellbin2.yml
 ├── run_cellbin_pipeline_patched_signed_gem.py
+├── cellbin2_example_params.json
 ├── run_cellbin2_single_sample.sh
 ├── run_cellbin2_queue_example.sh
-└── run_cellbin2_after_pid_example.sh
+├── run_cellbin2_after_pid_example.sh
+└── cellbin2_patch_notes.md
 ```
 
-## 软件版本与参数
+## 文件说明
 
-### 软件版本
+| 文件                                                             | 说明                               |
+| -------------------------------------------------------------- | -------------------------------- |
+| `environment_cellbin2.yml`                                     | 运行 CellBin2 使用的 conda 环境记录。      |
+| `run_cellbin_pipeline_patched_signed_gem.py`                   | 本项目中使用的本地修改版 CellBin2 runner。    |
+| [`cellbin2_example_params.json`](cellbin2_example_params.json) | CellBin2 参数文件示例，用于展示本项目使用的配置格式。  |
+| `run_cellbin2_single_sample.sh`                                | 单个样本运行 CellBin2 的示例脚本。           |
+| `run_cellbin2_queue_example.sh`                                | 多个样本顺序运行 CellBin2 的示例脚本。         |
+| `run_cellbin2_after_pid_example.sh`                            | 等待已有进程结束后再启动后续 CellBin2 任务的示例脚本。 |
+| [`cellbin2_patch_notes.md`](cellbin2_patch_notes.md)           | CellBin2 runner 本地适配性修改的简要说明。    |
 
-- 主软件：`CellBin2 1.2.1`
-- Python：`3.8.20`
-- PyTorch：`2.4.1+cu118`
-- 环境文件：`environment_cellbin2_st.yml`
+## 软件环境
 
-### 运行方式
+CellBin2 使用单独的 conda 环境运行。
 
-- CellBin2 使用样本对应的参数文件运行。
-- 本项目使用了本地 patched runner，而不是只依赖上游默认入口。
+主要环境信息如下：
 
-### 本地适配修改
+```text
+CellBin2: 1.2.1
+Python: 3.8.20
+PyTorch: 2.4.1+cu118
+```
 
-- 支持没有 `#OffsetX` / `#OffsetY` 头部信息的 GEM 文件
-- 支持将浮点形式的 count 值四舍五入后再累加
-- 将 visual GEF 的 bin size 限制为 `[1, 10, 20, 50, 100, 200]`
-- 兼容 legacy `*_mask_adjust.tif` 命名
-- 在 `extract4stitched()` 特征检测失败时增加 fallback
-- 在 registration 返回 `None` 时增加 fallback
+完整环境记录见：
 
-## 文件用途
+```text
+environment_cellbin2.yml
+```
 
-| 文件                                           | 说明                            |
-| -------------------------------------------- | ----------------------------- |
-| `environment_cellbin2.yml`                   | 记录运行 CellBin2 使用的 conda 环境。   |
-| `run_cellbin_pipeline_patched_signed_gem.py` | 本项目中用于适配性修改的 CellBin2 runner。 |
-| `run_cellbin2_single_sample.sh`              | 单个样本运行 CellBin2 的示例脚本。        |
-| `run_cellbin2_queue_example.sh`              | 多个样本串行运行的示例脚本。                |
-| `run_cellbin2_after_pid_example.sh`          | 等待已有进程结束后再启动后续样本的示例脚本。        |
+## 使用说明
 
-## 适配性修改说明
+本文件夹中的脚本和参数文件是根据实际运行流程整理后的简化示例。
 
-为了在本项目的数据上顺利运行 CellBin2，对部分流程做了适配性修改。
+实际复用前需要根据本地环境修改：
 
-主要包括：
+* 输入图像路径
+* 输入转录组矩阵路径
+* 输出目录
+* 样本名称
+* CellBin2 参数文件
+* conda 环境路径
 
-* 支持没有 `#OffsetX` / `#OffsetY` 头部信息的 GEM 文件；
-* 支持将 count 列中以浮点形式记录的数值读取后四舍五入再累加；
-* 将 visual GEF 的生成限制在更安全的 bin size 范围内；
-* 当已有可读取的临时 tissue GEF 文件时，复用该文件，避免重复生成；
-* 处理 legacy `*_mask_adjust.tif` 与流程期望的 `*_cell_mask.tif` 之间的命名不一致问题；
-* 当 `extract4stitched()` 中矩阵特征点检测失败时，增加兜底逻辑，避免流程直接中断；
-* 当 registration 返回 `None`、但下游仍访问 `info.offset` 时，增加 no-registration fallback 逻辑。
+参数文件示例见 [`cellbin2_example_params.json`](cellbin2_example_params.json)。
 
-这些修改主要是为了提高流程在本项目数据集上的稳定性，并不是对 CellBin2 核心分割模型本身进行修改。
+本地适配性修改说明见 [`cellbin2_patch_notes.md`](cellbin2_patch_notes.md)。
 
 ## 说明
 
-这些脚本是根据实际 CellBin2 运行记录整理后的简化示例。
+本文件夹主要用于记录分析流程，方便追溯运行方式，而不是用于完整数据复现。
 
-实际运行前需要根据本地环境修改输入路径、输出路径、样本名称、参数文件和环境路径。
+本仓库不包含大型文件，包括：
 
-大型输入数据、完整 CellBin2 输出结果、mask、中间文件和日志文件不保存在该仓库中。
+* 原始空间转录组数据
+* 大型组织图像或染色图像
+* 完整 CellBin2 输出目录
+* 分割 mask
+* GEF 文件
+* 完整表达矩阵
+* 中间文件和运行日志
+
+正式安装、完整流程和引用信息请参考 CellBin2 官方仓库和官方文档。
+
 
